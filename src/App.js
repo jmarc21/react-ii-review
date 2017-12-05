@@ -14,6 +14,8 @@ class App extends Component {
       teamTwo: [{ health: 100, "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png", "number": "97", "name": "Hypno" }],
       teamTwoTitle: 'Team Two'
     };
+    this.addToTeamOne = this.addToTeamOne.bind(this);
+    this.addToTeamTwo = this.addToTeamTwo.bind(this);
   }
 
   addToTeamOne(pokemon){
@@ -41,7 +43,7 @@ class App extends Component {
         </header>
         <div className='centerPart'>
           <Team list={this.state.teamOne} title={this.state.teamOneTitle}/>
-          <PokemonSelector addTeamOne={this.addToTeamOne} addTeamTwo={this.addToTeamTwo}/>
+          <PokemonSelector addToTeamOne={this.addToTeamOne} addToTeamTwo={this.addToTeamTwo}/>
           <Team list={this.state.teamTwo} title={this.state.teamTwoTitle}/>
         </div>
       </div>

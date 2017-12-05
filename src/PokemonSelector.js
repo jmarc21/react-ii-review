@@ -10,21 +10,26 @@ export default class PokemonSelector extends Component{
     }
 
     //make function to select a pokemon
-
+    selectPokemon(num){
+        let pokemon = arr.find(pokemon => pokemon.number == num)
+        this.setState({
+            selectedPokemon: pokemon
+        })
+    }
 
     render(){
-        var options = arr.map((e, i) => <option value={e}>{e.name}</option>)
+        var options = arr.map((e, i) => <option value={e.number}>{e.name}</option>)
 
         return (
             <div className='make_colume'>
                 {/* Add on click listener */}
-                <button className='small_margin'>Add To Team 1</button>
-                <select className='small_margin'>
+                <button onClick={()=>this.props.addToTeamOne(this.state.selectedPokemon) } className='small_margin'>Add To Team 1</button>
+                <select onChange={e => this.selectPokemon(e.target.value)}className='small_margin'>
                     <option>Please Select</option>
                     {options}
                 </select>
                 {/* Add on click Listener */}
-                <button className='small_margin'>Add To Team 2</button>
+                <button onClick={()=>this.props.addToTeamTwo(this.state.selectedPokemon)} className='small_margin'>Add To Team 2</button>
             </div>
         );
     }
